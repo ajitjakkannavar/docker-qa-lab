@@ -1,0 +1,13 @@
+name: Dockerized QA Run
+on: [push] # Run every time you click "Commit"
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build and Run in Docker
+        run: |
+          docker build -t my-qa-image .
+          docker run my-qa-image
